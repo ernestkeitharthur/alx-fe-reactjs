@@ -6,6 +6,7 @@ import WelcomeMessage from '/src/components/WelcomeMessage'
 import Header from '/src/components/Header'
 import MainContent from '/src/components/MainContent'
 import Footer from '/src/components/Footer'
+import UserProfile from '/src/components/UserProfile'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -15,6 +16,7 @@ function App() {
     <WelcomeMessage />
     <Header />
     <MainContent />
+    <UserProfile name="Alice" age="25" bio="Loves hiking and photography"/>
     <Footer />
     </>
   )
