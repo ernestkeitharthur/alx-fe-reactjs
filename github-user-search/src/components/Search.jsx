@@ -1,3 +1,4 @@
+// src/components/Search.jsx
 import React, { useState } from 'react';
 import { fetchUserData } from '../services/githubService';
 
@@ -47,12 +48,7 @@ const Search = () => {
                 <div>
                     <img src={user.avatar_url} alt={user.login} width={100} />
                     <p>Name: {user.name || 'N/A'}</p>
-                    <p>
-                        GitHub Profile:{' '}
-                        <a href={user.html_url} target="_blank" rel="noopener noreferrer">
-                            Visit
-                        </a>
-                    </p>
+                    <p>GitHub Profile: <a href={user.html_url} target="_blank" rel="noopener noreferrer">Visit</a></p>
                 </div>
             )}
         </div>
@@ -60,3 +56,17 @@ const Search = () => {
 };
 
 export default Search;
+
+// src/services/githubService.js
+import axios from 'axios';
+
+const GITHUB_API_BASE_URL = process.env.REACT_APP_GITHUB_API_URL || 'https://api.github.com';
+
+export const fetchUserData = async (username) => {
+    try {
+        const response = await axios.get(`${GITHUB_API_BASE_URL}/users/${username}`);
+        return response.data;
+    } catch (error) {
+        throw error.response;
+    }
+};
